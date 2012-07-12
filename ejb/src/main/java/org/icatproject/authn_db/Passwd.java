@@ -1,4 +1,4 @@
-package org.icatproject.useransto.entity;
+package org.icatproject.authn_db;
 
 import java.io.Serializable;
 

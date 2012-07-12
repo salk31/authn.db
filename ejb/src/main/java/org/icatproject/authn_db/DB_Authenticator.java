@@ -1,4 +1,4 @@
-package org.icatproject.useransto.facility;
+package org.icatproject.authn_db;
 
 import java.util.Map;
 
@@ -10,21 +10,21 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
+import org.icatproject.authn_db.Passwd;
 import org.icatproject.core.IcatException;
 import org.icatproject.core.authentication.Authenticator;
-import org.icatproject.useransto.entity.Passwd;
 
 @Stateless()
 @Remote(Authenticator.class)
 @TransactionManagement(TransactionManagementType.BEAN)
-public class AnstoUser implements Authenticator {
+public class DB_Authenticator implements Authenticator {
 
 	@PersistenceContext(unitName = "icatuser")
 	private EntityManager manager;
 
-	private static final Logger log = Logger.getLogger(AnstoUser.class);
+	private static final Logger log = Logger.getLogger(DB_Authenticator.class);
 
-	public AnstoUser() {
+	public DB_Authenticator() {
 		// File f = new File("icat.properties");
 		// try {
 		// Properties props = new Properties();
@@ -77,7 +77,7 @@ public class AnstoUser implements Authenticator {
 					"Username and password do not match");
 		}
 
-		return new Authentication(username, AnstoUser.class.getName());
+		return new Authentication(username, DB_Authenticator.class.getName());
 	}
 
 }
