@@ -5,7 +5,7 @@
     <persistence-unit name="icatuser" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/icatuser</jta-data-source>
-        <class>org.icatproject.useransto.entity.Passwd</class>
+        <class>org.icatproject.authn_db.Passwd</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="eclipselink.target-server" value="SunAS9" />
