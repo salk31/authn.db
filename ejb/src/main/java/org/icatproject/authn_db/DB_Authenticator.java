@@ -12,10 +12,8 @@ import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.icatproject.authn_db.Passwd;
 import org.icatproject.core.IcatException;
 import org.icatproject.core.authentication.AddressChecker;
 import org.icatproject.core.authentication.Authentication;
@@ -71,8 +69,7 @@ public class DB_Authenticator implements Authenticator {
 		if (addressChecker != null) {
 			if (!addressChecker.check(remoteAddr)) {
 				throw new IcatException(IcatException.IcatExceptionType.SESSION,
-						"authn_db does not allow log in from your IP address "
-								+ remoteAddr);
+						"authn_db does not allow log in from your IP address " + remoteAddr);
 			}
 		}
 
@@ -81,12 +78,12 @@ public class DB_Authenticator implements Authenticator {
 
 		if (username == null || username.equals("")) {
 			throw new IcatException(IcatException.IcatExceptionType.SESSION,
-					"Username cannot be null or empty.");
+					"username cannot be null or empty.");
 		}
 		String password = credentials.get("password");
 		if (password == null || password.equals("")) {
 			throw new IcatException(IcatException.IcatExceptionType.SESSION,
-					"Password cannot be null or empty.");
+					"password cannot be null or empty.");
 		}
 		log.debug("Entitity Manager is " + manager);
 		log.debug("Checking password against database");
@@ -94,12 +91,12 @@ public class DB_Authenticator implements Authenticator {
 		Passwd passwd = this.manager.find(Passwd.class, username);
 		if (passwd == null) {
 			throw new IcatException(IcatException.IcatExceptionType.SESSION,
-					"Username and password do not match");
+					"The username and password do not match");
 		}
 
 		if (!passwd.getEncodedPassword().equals(password)) {
 			throw new IcatException(IcatException.IcatExceptionType.SESSION,
-					"Username and password do not match");
+					"The username and password do not match");
 		}
 		log.info(username + " logged in succesfully");
 		return new Authentication(username, DB_Authenticator.class.getName());
