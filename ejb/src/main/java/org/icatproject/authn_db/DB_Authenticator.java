@@ -14,21 +14,22 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
+import org.icatproject.authentication.AddressChecker;
+import org.icatproject.authentication.Authentication;
 import org.icatproject.core.IcatException;
-import org.icatproject.core.authentication.AddressChecker;
-import org.icatproject.core.authentication.Authentication;
-import org.icatproject.core.authentication.Authenticator;
 
 /* Mapped name is to avoid name clashes */
 @Stateless(mappedName = "org.icatproject.authn_ldap.DB_Authenticator")
 @Remote
 @TransactionManagement(TransactionManagementType.BEAN)
-public class DB_Authenticator implements Authenticator {
+public class DB_Authenticator implements org.icatproject.authentication.Authenticator {
 
-	@PersistenceContext(unitName = "icatuser")
+	@PersistenceContext(unitName = "db_authn")
 	private EntityManager manager;
 
-	private AddressChecker addressChecker;
+	private org.icatproject.authentication.AddressChecker addressChecker;
+
+	private String mechanism;
 
 	private static final Logger log = Logger.getLogger(DB_Authenticator.class);
 
@@ -58,6 +59,8 @@ public class DB_Authenticator implements Authenticator {
 				throw new IllegalStateException(msg);
 			}
 		}
+		// Note that the mechanism is optional
+		mechanism = props.getProperty("mechanism");
 
 		log.debug("Initialised DB_Authenticator");
 	}
@@ -99,7 +102,7 @@ public class DB_Authenticator implements Authenticator {
 					"The username and password do not match");
 		}
 		log.info(username + " logged in succesfully");
-		return new Authentication(username, DB_Authenticator.class.getName());
+		return new Authentication(username, mechanism);
 	}
 
 }
