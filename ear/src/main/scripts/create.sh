@@ -23,4 +23,4 @@ $asadmin create-jdbc-connection-pool \
    --failconnection=true --steadypoolsize 2 --maxpoolsize 8 --ping \
    --property ${authn_dbProperties} \
    authn_db
-$asadmin create-jdbc-resource --connectionpoolid icatuser jdbc/authn_db
+$asadmin create-jdbc-resource --connectionpoolid authn_db jdbc/authn_db

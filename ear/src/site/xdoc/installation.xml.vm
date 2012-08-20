@@ -103,7 +103,7 @@
                 <code>
                     driver=oracle.jdbc.pool.OracleDataSource
                     <br />
-                    authn_dbProperties=url="'"jdbc:oracle:thin:@//localhost:1521/XE"'":ImplicitCachingEnabled=true:MaxStatements=200:user=authn_db:password=anotherSecret
+                    authn_dbProperties=url="'"jdbc:oracle:thin:@//localhost:1521/XE"'":ImplicitCachingEnabled=true:MaxStatements=200:user=authn_db:password=secret
                     <br />
                 </code>
                 <p>
@@ -115,7 +115,7 @@
                 <code>
                     driver=com.mysql.jdbc.jdbc2.optional.MysqlDataSource
                     <br />
-                    icatuserProperties=user=icat:password=anotherSecret:databaseName=authn_db
+                    authn_dbProperties=user=icat:password=secret:databaseName=authn_db
                     <br />
                 </code>
             </subsection>
