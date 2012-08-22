@@ -98,7 +98,8 @@
                 </dl>
 
                 <p>For a local oracle-xe installation the following values of driver, authn_dbProperties should be good except for
-                    the user and password values:
+                    the user and
+                    password values:
                 </p>
                 <code>
                     driver=oracle.jdbc.pool.OracleDataSource
@@ -190,7 +191,9 @@
                     value.
                 </p>
                 <p>As the file is deployed the database is created. There is currently no mechanism to add entries to the password database so you
-                    must use the a database utility to do this directly. Currently passwords are stored in plain text.
+                    must use a database utility to do this manually. Currently passwords are stored in plain text. The name of the table is
+                    dependent
+                    upon the RDBMS you have chosen to use, but should be PASSWD (though it may not be in upper case).
                 </p>
             </subsection>
             <subsection name="Check that authn_db works">
