@@ -19,7 +19,7 @@ import org.icatproject.authentication.Authentication;
 import org.icatproject.core.IcatException;
 
 /* Mapped name is to avoid name clashes */
-@Stateless(mappedName = "org.icatproject.authn_ldap.DB_Authenticator")
+@Stateless(mappedName = "org.icatproject.authn_db.DB_Authenticator")
 @Remote
 @TransactionManagement(TransactionManagementType.BEAN)
 public class DB_Authenticator implements org.icatproject.authentication.Authenticator {
@@ -33,7 +33,6 @@ public class DB_Authenticator implements org.icatproject.authentication.Authenti
 
 	private static final Logger log = Logger.getLogger(DB_Authenticator.class);
 
-	@SuppressWarnings("unused")
 	@PostConstruct
 	private void init() {
 		File f = new File("authn_db.properties");
