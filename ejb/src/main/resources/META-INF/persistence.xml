@@ -5,7 +5,7 @@
     <persistence-unit name="db_authn" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/authn_db</jta-data-source>
-        <class>org.icatproject.authn_db.Passwd</class>
+        <class>org.icatproject.authentication.Passwd</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="eclipselink.target-server" value="SunAS9" />

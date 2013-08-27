@@ -16,6 +16,7 @@ import javax.persistence.PersistenceContext;
 import org.apache.log4j.Logger;
 import org.icatproject.authentication.AddressChecker;
 import org.icatproject.authentication.Authentication;
+import org.icatproject.authentication.Passwd;
 import org.icatproject.core.IcatException;
 
 /* Mapped name is to avoid name clashes */
@@ -96,7 +97,7 @@ public class DB_Authenticator implements org.icatproject.authentication.Authenti
 					"The username and password do not match");
 		}
 
-		if (!passwd.getEncodedPassword().equals(password)) {
+		if (!passwd.verify(password)) {
 			throw new IcatException(IcatException.IcatExceptionType.SESSION,
 					"The username and password do not match");
 		}
