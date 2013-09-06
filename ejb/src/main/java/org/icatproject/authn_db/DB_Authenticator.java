@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
 import org.apache.log4j.Logger;
 import org.icatproject.authentication.AddressChecker;
 import org.icatproject.authentication.Authentication;
-import org.icatproject.authentication.Passwd;
+import org.icatproject.authentication.PasswordChecker;
 import org.icatproject.core.IcatException;
 
 /* Mapped name is to avoid name clashes */
@@ -84,7 +84,7 @@ public class DB_Authenticator implements org.icatproject.authentication.Authenti
 					"username cannot be null or empty.");
 		}
 		String password = credentials.get("password");
-		if (password == null || password.equals("")) {
+		if (password == null || password.isEmpty()) {
 			throw new IcatException(IcatException.IcatExceptionType.SESSION,
 					"password cannot be null or empty.");
 		}
@@ -97,7 +97,7 @@ public class DB_Authenticator implements org.icatproject.authentication.Authenti
 					"The username and password do not match");
 		}
 
-		if (!passwd.verify(password)) {
+		if (!PasswordChecker.verify(password, passwd.getEncodedPassword())) {
 			throw new IcatException(IcatException.IcatExceptionType.SESSION,
 					"The username and password do not match");
 		}

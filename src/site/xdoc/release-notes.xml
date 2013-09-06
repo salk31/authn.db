@@ -6,6 +6,10 @@
     </properties>
 
     <body>
+        <section name="1.1.0">
+            <p>This release supports encrypted passwords. It is backwards compatible except that any existing passwords with a leading '$' must be
+                changed as these will be treated as encrypted passwords.</p>
+        </section>
         <section name="1.0.0">
             <p>Initial release</p>
         </section>
