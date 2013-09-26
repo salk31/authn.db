@@ -19,8 +19,7 @@ import org.icatproject.authentication.Authentication;
 import org.icatproject.authentication.PasswordChecker;
 import org.icatproject.core.IcatException;
 
-/* Mapped name is to avoid name clashes */
-@Stateless(mappedName = "org.icatproject.authn_db.DB_Authenticator")
+@Stateless
 @Remote
 @TransactionManagement(TransactionManagementType.BEAN)
 public class DB_Authenticator implements org.icatproject.authentication.Authenticator {
