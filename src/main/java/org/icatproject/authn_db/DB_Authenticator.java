@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Properties;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
@@ -16,11 +15,10 @@ import javax.persistence.PersistenceContext;
 import org.apache.log4j.Logger;
 import org.icatproject.authentication.AddressChecker;
 import org.icatproject.authentication.Authentication;
+import org.icatproject.authentication.PasswordChecker;
 import org.icatproject.core.IcatException;
 
-/* Mapped name is to avoid name clashes */
-@Stateless(mappedName = "org.icatproject.authn_ldap.DB_Authenticator")
-@Remote
+@Stateless
 @TransactionManagement(TransactionManagementType.BEAN)
 public class DB_Authenticator implements org.icatproject.authentication.Authenticator {
 
@@ -33,7 +31,6 @@ public class DB_Authenticator implements org.icatproject.authentication.Authenti
 
 	private static final Logger log = Logger.getLogger(DB_Authenticator.class);
 
-	@SuppressWarnings("unused")
 	@PostConstruct
 	private void init() {
 		File f = new File("authn_db.properties");
@@ -84,7 +81,7 @@ public class DB_Authenticator implements org.icatproject.authentication.Authenti
 					"username cannot be null or empty.");
 		}
 		String password = credentials.get("password");
-		if (password == null || password.equals("")) {
+		if (password == null || password.isEmpty()) {
 			throw new IcatException(IcatException.IcatExceptionType.SESSION,
 					"password cannot be null or empty.");
 		}
@@ -97,7 +94,7 @@ public class DB_Authenticator implements org.icatproject.authentication.Authenti
 					"The username and password do not match");
 		}
 
-		if (!passwd.getEncodedPassword().equals(password)) {
+		if (!PasswordChecker.verify(password, passwd.getEncodedPassword())) {
 			throw new IcatException(IcatException.IcatExceptionType.SESSION,
 					"The username and password do not match");
 		}

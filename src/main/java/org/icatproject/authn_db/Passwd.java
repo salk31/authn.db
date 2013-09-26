@@ -9,7 +9,6 @@ import javax.persistence.Id;
 @Entity
 public class Passwd implements Serializable {
 
-	@SuppressWarnings("unused")
 	@Id
 	private String userName;
 
