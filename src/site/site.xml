@@ -13,7 +13,7 @@
     </menu>
        
     <menu name="Information for Installers">
-    <item name="Authn DB Plugin Installation" href="authn_db.ear/installation.html"/>
+    <item name="Authn DB Plugin Installation" href="installation.html"/>
     </menu>
     
     <menu ref="reports"/>
