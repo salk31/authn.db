@@ -1,0 +1,61 @@
+#!/usr/bin/env python
+from setup_utils import *
+import os
+
+# authn_db
+
+actions, options, arg = getActions()
+props = actions.getGlassfish("authn_db-setup.properties", ["authn_dbProperties", "glassfish", "driver", "port"])
+
+prop_name = "authn_db.properties"
+prop_list = []
+
+if arg == "CONFIGURE":
+    actions.configure(prop_name, prop_list)
+    actions.setConfigured()
+    
+elif arg == "INSTALL":
+    
+    actions.checkConfigured()
+           
+    icatProperties = actions.getProperties(prop_name, prop_list)       
+           
+    actions.installFile(prop_name)
+    
+    try:
+        
+        app = actions.getAppName("authn_db.ear")
+        if app: actions.asadmin("undeploy " + app) 
+        app = actions.getAppName("icat.war")
+        if app: actions.asadmin("undeploy " + app)
+        
+        actions.asadmin("delete-jdbc-resource jdbc/authn_db", tolerant=True)
+        actions.asadmin("delete-jdbc-connection-pool authn_db", tolerant=True)
+        
+        actions.asadmin('create-jdbc-connection-pool --datasourceclassname ' + props["driver"] + 
+                ' --restype javax.sql.DataSource --failconnection=true --steadypoolsize 2' + 
+                ' --maxpoolsize 8 --ping --property ' + props["authn_dbProperties"] + ' authn_db', printOutput=True)
+        
+        actions.asadmin("create-jdbc-resource --connectionpoolid authn_db jdbc/authn_db")
+      
+        actions.deploy("authn_db-*.war")
+                    
+    except Exception, e:
+        abort(str(e))
+               
+else:  # UNINSTALL
+    
+    actions.removeFile(prop_name)
+    
+    try:
+        app = actions.getAppName("icat.ear")
+        if app: actions.asadmin("undeploy " + app)
+        app = actions.getAppName("icat.war")
+        if app: actions.asadmin("undeploy " + app)
+        actions.asadmin("delete-jdbc-resource jdbc/authn_db", tolerant=True)
+        actions.asadmin("delete-jdbc-connection-pool authn_db", tolerant=True)   
+    except Exception, e:
+        abort(str(e))       
+    
+            
+    

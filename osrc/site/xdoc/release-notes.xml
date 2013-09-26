@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+    <properties>
+        <title>ICAT AUTHN_DB Release Notes</title>
+    </properties>
+
+    <body>
+        <section name="1.1.0">
+            <p>This release supports encrypted passwords. It is backwards compatible except that any existing passwords with a leading '$' must be
+                changed as these will be treated as encrypted passwords.</p>
+        </section>
+        <section name="1.0.0">
+            <p>Initial release</p>
+        </section>
+
+    </body>
+</document>
+            
+            
+   
