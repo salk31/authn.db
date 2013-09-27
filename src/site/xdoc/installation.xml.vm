@@ -16,7 +16,7 @@
                 <ul>
                     <li>
                         The authn_db distribution:
-                        <a href="${repoUrl}/org/icatproject/authn_db.ear/${project.version}/authn_db.ear-${project.version}-distro.zip">authn_db.ear-${project.version}-distro.zip</a>
+                        <a href="${repoUrl}/org/icatproject/authn_db/${project.version}/authn_db-${project.version}-distro.zip">authn_db-${project.version}-distro.zip</a>
                     </li>
                     <li>
                         A suitable deployed container (here assumed to be glassfish though tomcat should be sufficient) to support a web
