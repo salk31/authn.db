@@ -37,7 +37,7 @@
     <scm>
         <connection>scm:svn:http://icatproject.googlecode.com/svn/authn/db/trunk</connection>
         <developerConnection>scm:svn:https://icatproject.googlecode.com/svn/authn/db/trunk</developerConnection>
-        <url>http://code.google.com/p/icatproject/source/browse/#svn%2Fauthn%2db%2Ftrunk</url>
+        <url>http://code.google.com/p/icatproject/source/browse/#svn%2Fauthn%2Fdb%2Ftrunk</url>
     </scm>
 
     <licenses>
