@@ -19,15 +19,16 @@
                         <a href="${repoUrl}/org/icatproject/authn_db/${project.version}/authn_db-${project.version}-distro.zip">authn_db-${project.version}-distro.zip</a>
                     </li>
                     <li>
-                        A suitable deployed container (here assumed to be glassfish though tomcat should be sufficient) to support a web
+                        A suitable deployed container (here assumed to be glassfish) to support a web
                         application.
-                        Testing has been carried out with Glassfish 3.1.2.
-                        <a href="https://code.google.com/p/icatproject/wiki/Glassfish">Glassfish installation instructions</a>
+                        Testing has been carried out with
+                        Glassfish 4.0.
+                        <a href="http://icatproject.org/installation/glassfish/">Glassfish installation instructions</a>
                         are available.
                     </li>
                     <li>
                         A database as described in
-                        <a href="https://code.google.com/p/icatproject/wiki/Databases">Database installation instructions</a>
+                        <a href="http://icatproject.org/installation/database">Database installation instructions</a>
                         installed on the server
                     </li>
 
@@ -41,9 +42,11 @@
                 <ol>
                     <li>
                         Please follow
-                        <a href="http://code.google.com/p/icatproject/wiki/Installation"> the generic installation instructions</a>
+                        <a href="http://icatproject.org/installation/component/"> the generic installation instructions</a>
                     </li>
-                    <li> Update the icat.properties file for icat to see the authenticator.</li>
+                    <li>Update the icat.properties file for icat.server to see the authenticator and restart icat to see the change. The easiest way
+                        is to rerun the setup script for the icat.server.
+                    </li>
                     <li>Add users</li>
                     <li>Check that it works.</li>
                 </ol>
@@ -54,7 +57,7 @@
                 <dl>
                     <dt>driver</dt>
                     <dd>is the name of the jdbc driver and must match the jar file for your database that you stored in the previous step.</dd>
-                    <dt>authn_dbProperties</dt>
+                    <dt>dbProperties</dt>
                     <dd>identifies the password database and how to connect to it.</dd>
                     <dt>glassfish</dt>
                     <dd>is the top level of the glassfish installation. It must contain "glassfish/domains", and will be referred to here as
@@ -64,14 +67,13 @@
                     <dd>is the administration port of the chosen glassfish domain which is typically 4848.</dd>
                 </dl>
 
-                <p>For a local oracle-xe installation the following values of driver, authn_dbProperties should be good except for
-                    the user and
-                    password values:
+                <p>For a local oracle-xe installation the following values of driver, dbProperties should be good except for the user and password
+                    values:
                 </p>
                 <code>
                     driver=oracle.jdbc.pool.OracleDataSource
                     <br />
-                    authn_dbProperties=url="'"jdbc:oracle:thin:@//localhost:1521/XE"'":ImplicitCachingEnabled=true:MaxStatements=200:user=authn_db:password=secret
+                    dbProperties=url="'"jdbc:oracle:thin:@//localhost:1521/XE"'":ImplicitCachingEnabled=true:MaxStatements=200:user=authn_db:password=secret
                     <br />
                 </code>
                 <p>
@@ -94,11 +96,8 @@
 
                 <dl>
                     <dt>ip</dt>
-                    <dd>If access to the DB authentication should only be allowed from certain
-                        IP addresses then provide a space separated list of
-                        allowed values. These
-                        take the form of an IPV4 or IPV6 address followed by the number of bits
-                        (starting from the most
+                    <dd>If access to the DB authentication should only be allowed from certain IP addresses then provide a space separated list of
+                        allowed values. These take the form of an IPV4 or IPV6 address followed by the number of bits (starting from the most
                         significant) to consider.
                     </dd>
 
@@ -127,25 +126,15 @@
             <subsection name="Add users">Users should be added by manually adding them to the database table PASSWD. This has two columns, one for the
                 username and one for the password. The password may be entered as clear text without a leading &quot;$&quot; or a cryptographic
                 hash of
-                a password may be
-                stored.
-                A password hash must start with a &quot;$&quot; character
-                and be in the same form as found in the shadow(5)
-                password
-                file. It
-                may be created using the mkpasswd(1) utility on
-                Debian systems or grub-crypt on
-                Red Hat derived systems or the python
-                crypt
-                module. The supported hash
-                algorithms are MD5, SHA-256, and SHA-512.
+                a password may be stored. A password hash must start with a &quot;$&quot; character and be in the same form as found in the shadow(5)
+                password file. It may be created using the mkpasswd(1) utility on Debian systems or grub-crypt on Red Hat derived systems or the
+                python crypt module. The supported hash algorithms are MD5, SHA-256, and SHA-512.
             </subsection>
 
             <subsection name="Check that authn_db works">
                 <p>Use testicat (which is installed with ICAT) with one of the entries in the database PASSWD table. It should report that it logs in
                     but may or may not have the permission to run the rest of the test. If it does not report that it has logged in then please check
-                    the server.log and the
-                    authn_db.log files which can both be found in the logs directory below your domain.
+                    the server.log and the authn_db.log files which can both be found in the logs directory below your domain.
                 </p>
             </subsection>
 

@@ -2,13 +2,32 @@
 <document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
-        <title>IJP Release Notes</title>
+        <title>ICAT AUTHN_DB Release Notes</title>
     </properties>
 
     <body>
-        <section name="2.0.0">
-            <p>Initial release - this is the first properly tagged release</p>
+        <section name="1.1.2">
+            <p>Small changes</p>
+            <ul>
+                <li>Set deploymentorder to 80</li>
+                <li>Change the properties.example file to include mechanism by default.</li>
+                <li>Change the setup.properties.example file to use the property dbProperties rather than authn_dbProperties.</li>
+            </ul>
         </section>
+        <section name="1.1.1">
+            <p>Allow multiple authenticators to be deployed together.</p>
+        </section>
+        <section name="1.1.0">
+            <p>This release supports encrypted passwords. It is backwards compatible except that any existing passwords with a leading '$' must be
+                changed as these will be treated as encrypted passwords.
+            </p>
+        </section>
+        <section name="1.0.0">
+            <p>Initial release</p>
+        </section>
+
     </body>
 </document>
             
+            
+   
