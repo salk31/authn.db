@@ -2,9 +2,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
   <body>
-  
+    
     <breadcrumbs>
-      <item name="IJP" href="index.html"/>
+      <item name="Authn DB" href="index.html"/>
     </breadcrumbs>
 
     <menu name="Information for Users">    
@@ -13,10 +13,11 @@
     </menu>
        
     <menu name="Information for Installers">
-    <item name="IJP Installation" href="installation.html"/>
+    <item name="Authn DB Plugin Installation" href="installation.html"/>
     </menu>
     
     <menu ref="reports"/>
+    
  
   </body>
 </project>
