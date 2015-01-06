@@ -3,7 +3,7 @@
 
     <groupId>org.icatproject</groupId>
     <artifactId>authn_db</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.3-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <distributionManagement>
@@ -35,9 +35,9 @@
     </issueManagement>
 
     <scm>
-        <connection>scm:svn:http://icatproject.googlecode.com/svn/authn/db/tags/authn_db-1.1.2</connection>
-        <developerConnection>scm:svn:https://icatproject.googlecode.com/svn/authn/db/tags/authn_db-1.1.2</developerConnection>
-        <url>http://code.google.com/p/icatproject/source/browse/#svn%2Fauthn%2Fdb%2Ftrunk/tags/authn_db-1.1.2</url>
+        <connection>scm:svn:http://icatproject.googlecode.com/svn/authn/db/trunk</connection>
+        <developerConnection>scm:svn:https://icatproject.googlecode.com/svn/authn/db/trunk</developerConnection>
+        <url>http://code.google.com/p/icatproject/source/browse/#svn%2Fauthn%2Fdb%2Ftrunk</url>
     </scm>
 
     <licenses>
