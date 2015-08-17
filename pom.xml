@@ -1,199 +1,203 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.icatproject</groupId>
-    <artifactId>authn.db</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+	<groupId>org.icatproject</groupId>
+	<artifactId>authn.db</artifactId>
+	<version>1.2.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>ICAT DB Authn</name>
 
-    <distributionManagement>
-        <downloadUrl>http://www.icatproject.org/mvn/repo</downloadUrl>
-        <site>
-            <id>website</id>
-            <url>scp://www.icatproject.org/var/www/html/mvn/site/authn_db/${project.version}</url>
-        </site>
-        <repository>
-            <id>repo</id>
-            <url>scp://www.icatproject.org/var/www/html/mvn/repo</url>
-        </repository>
-    </distributionManagement>
+	<description>DB Authentication for ICAT.</description>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<repoUrl>http://www.icatproject.org/mvn/repo</repoUrl>
+		<project.scm.id>github</project.scm.id>
+	</properties>
 
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	<repositories>
+		<repository>
+			<id>ICAT Repo</id>
+			<url>http://www.icatproject.org/mvn/repo</url>
+		</repository>
+	</repositories>
 
-        <repoUrl>http://www.icatproject.org/mvn/repo</repoUrl>
-        <serverPort>8181</serverPort>
-        <serverHost>localhost</serverHost>
-    </properties>
+	<scm>
+		<connection>scm:git:https://github.com/icatproject/authn.db.git</connection>
+		<developerConnection>scm:git:https://github.com/icatproject/authn.db.git</developerConnection>
+		<url>https://github.com/icatproject/authn.db</url>
+	</scm>
 
-    <description>Main pom to build Database Authentication components. For more information please see the individual components.</description>
-    <issueManagement>
-        <url>http://code.google.com/p/icatproject/issues/list</url>
-        <system>Google Code</system>
-    </issueManagement>
+	<issueManagement>
+		<url>https://github.com/icatproject/authn.db/issues</url>
+		<system>GitHub</system>
+	</issueManagement>
 
-    <scm>
-        <connection>scm:svn:http://icatproject.googlecode.com/svn/authn/db/trunk</connection>
-        <developerConnection>scm:svn:https://icatproject.googlecode.com/svn/authn/db/trunk</developerConnection>
-        <url>http://code.google.com/p/icatproject/source/browse/#svn%2Fauthn%2Fdb%2Ftrunk</url>
-    </scm>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
 
-    <licenses>
-        <license>
-            <name>BSD 2-Clause</name>
-            <url>http://www.opensource.org/licenses/BSD-2-Clause</url>
-            <distribution>repo</distribution>
-            <comments>Also know informally as the Simplified BSD or FreeBSD License</comments>
-        </license>
-    </licenses>
+	<organization>
+		<name>The ICAT Collaboration</name>
+		<url>http://www.icatproject.org</url>
+	</organization>
 
-    <organization>
-        <name>The ICAT Collaboration</name>
-        <url>http://www.icatproject.org</url>
-    </organization>
-
-    <name>ICAT DB Authn</name>
-
-    <repositories>
-        <repository>
-            <id>EclipseLink Repo</id>
-            <url>http://download.eclipse.org/rt/eclipselink/maven.repo</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-
-        <repository>
-            <id>ICAT Repo</id>
-            <url>http://www.icatproject.org/mvn/repo</url>
-        </repository>
-
-    </repositories>
-
-    <dependencies>
-
-        <dependency>
-            <groupId>org.icatproject</groupId>
-            <artifactId>icat.authentication</artifactId>
-            <version>4.3.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.icatproject</groupId>
-            <artifactId>icat.utils</artifactId>
-            <version>4.9.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
-        </dependency>
-
-    </dependencies>
-
-    <build>
+	<distributionManagement>
+		<downloadUrl>http://www.icatproject.org/mvn/repo</downloadUrl>
+		<site>
+			<id>website</id>
+			<url>scp://www.icatproject.org/var/www/html/mvn/site/authn/db/${project.version}</url>
+		</site>
+		<repository>
+			<id>repo</id>
+			<url>scp://www.icatproject.org/var/www/html/mvn/repo</url>
+		</repository>
+	</distributionManagement>
 
 
-        <plugins>
+	<dependencies>
+
+		<dependency>
+			<groupId>org.icatproject</groupId>
+			<artifactId>icat.authentication</artifactId>
+			<version>4.5.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.icatproject</groupId>
+			<artifactId>icat.utils</artifactId>
+			<version>4.11.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.json</artifactId>
+			<version>1.0.4</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
 
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <descriptors>
-                        <descriptor>src/assemble/distribution.xml</descriptor>
-                    </descriptors>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.1</version>
-                <dependencies>
-                    <dependency><!-- add support for ssh/scp -->
-                        <groupId>org.apache.maven.wagon</groupId>
-                        <artifactId>wagon-ssh</artifactId>
-                        <version>1.0</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.7</version>
-                <dependencies>
-                    <dependency><!-- add support for ssh/scp -->
-                        <groupId>org.apache.maven.wagon</groupId>
-                        <artifactId>wagon-ssh</artifactId>
-                        <version>1.0</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
-        </plugins>
-
-    </build>
+		<plugins>
 
 
-    <reporting>
-        <plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.4</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>index</report>
-                            <report>summary</report>
-                            <report>dependencies</report>
-                            <report>issue-tracking</report>
-                            <report>license</report>
-                            <report>plugins</report>
-                            <report>scm</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
 
-        </plugins>
-    </reporting>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.5</version>
+				<configuration>
+					<descriptors>
+						<descriptor>src/assemble/distribution.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.4</version>
+				<dependencies>
+					<dependency><!-- add support for ssh/scp -->
+						<groupId>org.apache.maven.wagon</groupId>
+						<artifactId>wagon-ssh</artifactId>
+						<version>1.0</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.2</version>
+				<dependencies>
+					<dependency><!-- add support for ssh/scp -->
+						<groupId>org.apache.maven.wagon</groupId>
+						<artifactId>wagon-ssh</artifactId>
+						<version>1.0</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+	<reporting>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>index</report>
+							<report>summary</report>
+							<report>dependencies</report>
+							<report>issue-tracking</report>
+							<report>license</report>
+							<report>plugins</report>
+							<report>scm</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+		</plugins>
+	</reporting>
 
 </project>
 

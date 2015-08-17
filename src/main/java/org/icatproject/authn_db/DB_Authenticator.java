@@ -1,5 +1,6 @@
 package org.icatproject.authn_db;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Map;
@@ -9,6 +10,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
+import javax.json.Json;
+import javax.json.stream.JsonGenerator;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -40,8 +43,7 @@ public class DB_Authenticator implements org.icatproject.authentication.Authenti
 			props = new Properties();
 			props.load(new FileInputStream(f));
 		} catch (Exception e) {
-			String msg = "Unable to read property file " + f.getAbsolutePath() + "  "
-					+ e.getMessage();
+			String msg = "Unable to read property file " + f.getAbsolutePath() + "  " + e.getMessage();
 			log.fatal(msg);
 			throw new IllegalStateException(msg);
 
@@ -51,8 +53,8 @@ public class DB_Authenticator implements org.icatproject.authentication.Authenti
 			try {
 				addressChecker = new AddressChecker(authips);
 			} catch (IcatException e) {
-				String msg = "Problem creating AddressChecker with information from "
-						+ f.getAbsolutePath() + "  " + e.getMessage();
+				String msg = "Problem creating AddressChecker with information from " + f.getAbsolutePath() + "  "
+						+ e.getMessage();
 				log.fatal(msg);
 				throw new IllegalStateException(msg);
 			}
@@ -64,8 +66,7 @@ public class DB_Authenticator implements org.icatproject.authentication.Authenti
 	}
 
 	@Override
-	public Authentication authenticate(Map<String, String> credentials, String remoteAddr)
-			throws IcatException {
+	public Authentication authenticate(Map<String, String> credentials, String remoteAddr) throws IcatException {
 
 		if (addressChecker != null) {
 			if (!addressChecker.check(remoteAddr)) {
@@ -78,29 +79,36 @@ public class DB_Authenticator implements org.icatproject.authentication.Authenti
 		log.debug("login:" + username);
 
 		if (username == null || username.equals("")) {
-			throw new IcatException(IcatException.IcatExceptionType.SESSION,
-					"username cannot be null or empty.");
+			throw new IcatException(IcatException.IcatExceptionType.SESSION, "username cannot be null or empty.");
 		}
 		String password = credentials.get("password");
 		if (password == null || password.isEmpty()) {
-			throw new IcatException(IcatException.IcatExceptionType.SESSION,
-					"password cannot be null or empty.");
+			throw new IcatException(IcatException.IcatExceptionType.SESSION, "password cannot be null or empty.");
 		}
 		log.debug("Entitity Manager is " + manager);
 		log.debug("Checking password against database");
 
 		Passwd passwd = this.manager.find(Passwd.class, username);
 		if (passwd == null) {
-			throw new IcatException(IcatException.IcatExceptionType.SESSION,
-					"The username and password do not match");
+			throw new IcatException(IcatException.IcatExceptionType.SESSION, "The username and password do not match");
 		}
 
 		if (!PasswordChecker.verify(password, passwd.getEncodedPassword())) {
-			throw new IcatException(IcatException.IcatExceptionType.SESSION,
-					"The username and password do not match");
+			throw new IcatException(IcatException.IcatExceptionType.SESSION, "The username and password do not match");
 		}
 		log.info(username + " logged in succesfully");
 		return new Authentication(username, mechanism);
+	}
+
+	@Override
+	public String getDescription() {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		JsonGenerator gen = Json.createGenerator(baos);
+		gen.writeStartObject().writeStartArray("keys");
+		gen.writeStartObject().write("name", "username").writeEnd();
+		gen.writeStartObject().write("name", "password").write("hide", true).writeEnd();
+		gen.writeEnd().writeEnd().close();
+		return baos.toString();
 	}
 
 }
