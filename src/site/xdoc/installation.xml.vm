@@ -18,7 +18,7 @@
 
 		<ul>
 			<li>The authn.db distribution: <a
-				href="${repoUrl}/org/icatproject/authn/db/${project.version}/authn.db-${project.version}-distro.zip">authn.db-${project.version}-distro.zip</a>
+				href="${repoUrl}/org/icatproject/authn.db/${project.version}/authn.db-${project.version}-distro.zip">authn.db-${project.version}-distro.zip</a>
 			</li>
 			<li>A suitable deployed container (here assumed to be glassfish)
 				to support a web application. Testing has been carried out with
