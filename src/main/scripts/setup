@@ -13,8 +13,7 @@ def undeploy():
     actions.unregisterDB("authn_db")
     
     
-actions, options, arg = getActions()
-props = actions.getGlassfish("authn_db-setup.properties", ["dbProperties", "glassfish", "driver", "port"])
+actions, arg, props = getActions("authn_db-setup.properties", ["db.vendor","db.driver","db.url","db.username","db.password"])
 
 prop_name = "authn_db.properties"
 prop_list = []
@@ -24,12 +23,12 @@ if arg in ["CONFIGURE", "INSTALL"]:
     actions.checkNoErrors()
     
 if arg == "INSTALL":
-    icatProperties = actions.getProperties(prop_name, prop_list)       
+    getProperties(prop_name, prop_list)       
     actions.installFile(prop_name)
     
     try:
         undeploy()
-        actions.registerDB(props["driver"], props["dbProperties"], "authn_db")
+        actions.registerDB("authn_db", props["db.vendor"], props["db.driver"], props["db.url"], props["db.username"], props["db.password"])
         actions.deploy("authn.db-*.war", deploymentorder=80)
         app = actions.getAppName("icat.server")
         if app: actions.restartApp(app)
