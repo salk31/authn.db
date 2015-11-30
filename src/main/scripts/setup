@@ -13,7 +13,7 @@ def undeploy():
     actions.unregisterDB("authn_db")
     
     
-actions, arg, props = getActions("authn_db-setup.properties", ["db.vendor","db.driver","db.url","db.username","db.password"])
+actions, arg, props = getActions("authn_db-setup.properties", ["db.vendor", "db.driver", "db.url", "db.username", "db.password"])
 
 prop_name = "authn_db.properties"
 prop_list = []
@@ -29,7 +29,7 @@ if arg == "INSTALL":
     try:
         undeploy()
         actions.registerDB("authn_db", props["db.vendor"], props["db.driver"], props["db.url"], props["db.username"], props["db.password"])
-        actions.deploy("authn.db-*.war", deploymentorder=80)
+        actions.deploy(deploymentorder=80)
         app = actions.getAppName("icat.server")
         if app: actions.restartApp(app)
                     

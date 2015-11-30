@@ -10,7 +10,7 @@
 
 		<section name="1.2.0">
 			<p>Implement the Authenticator interface 4.5.0 with the
-				getDescription() call. And support multiple containers.
+				getDescription() call, and support multiple containers.
 			</p>
 		</section>
 
@@ -24,11 +24,11 @@
 					dbProperties rather than authn_dbProperties.</li>
 			</ul>
 		</section>
-		
+
 		<section name="1.1.1">
 			<p>Allow multiple authenticators to be deployed together.</p>
 		</section>
-		
+
 		<section name="1.1.0">
 			<p>This release supports encrypted passwords. It is backwards
 				compatible except that any existing passwords with a leading '$'
@@ -36,7 +36,7 @@
 				changed as these will be treated as encrypted passwords.
 			</p>
 		</section>
-		
+
 		<section name="1.0.0">
 			<p>Initial release</p>
 		</section>
