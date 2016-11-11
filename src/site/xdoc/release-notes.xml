@@ -8,6 +8,11 @@
 
 	<body>
 
+		<section name="1.2.1">
+			<p>Provide compatibility with Payara.
+			</p>
+		</section>
+
 		<section name="1.2.0">
 			<p>Implement the Authenticator interface 4.5.0 with the
 				getDescription() call, and support multiple containers.
@@ -19,9 +24,11 @@
 			<ul>
 				<li>Set deploymentorder to 80</li>
 				<li>Change the properties.example file to include mechanism by
-					default.</li>
+					default.
+				</li>
 				<li>Change the setup.properties.example file to use the property
-					dbProperties rather than authn_dbProperties.</li>
+					dbProperties rather than authn_dbProperties.
+				</li>
 			</ul>
 		</section>
 
