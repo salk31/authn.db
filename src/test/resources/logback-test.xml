@@ -1,0 +1,15 @@
+<configuration>
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+
+		<encoder>
+			<pattern>%date %level %C{0} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<root level="TRACE">
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+</configuration>
