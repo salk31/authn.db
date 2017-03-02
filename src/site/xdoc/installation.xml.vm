@@ -20,10 +20,10 @@
 			<li>The authn.db distribution: <a
 				href="${repoUrl}/org/icatproject/authn.db/${project.version}/authn.db-${project.version}-distro.zip">authn.db-${project.version}-distro.zip</a>
 			</li>
-			<li>A suitable deployed container (here assumed to be glassfish)
-				to support a web application. Testing has been carried out with
-				Glassfish 4.0. <a
-				href="http://icatproject.org/installation/glassfish/">Glassfish
+			<li>A suitable deployed container (here assumed to be
+				glassfish/payara) to support a web application. Testing has been
+				carried out with payara41. <a
+				href="http://icatproject.org/installation/glassfish/">Glassfish/Payara
 					installation instructions</a> are available.
 			</li>
 			<li>A database as described in <a
@@ -49,7 +49,7 @@
 		</ol>
 		</subsection>
 
-		<subsection name="The authn_db.setup.properties file">
+		<subsection name="The setup.properties file">
 
 		<dl>
 			<dt>container</dt>
@@ -84,8 +84,7 @@
 		</subsection>
 
 
-		<subsection name="The authn_db.properties file">
-
+		<subsection name="The run.properties file">
 
 		<dl>
 			<dt>ip</dt>
