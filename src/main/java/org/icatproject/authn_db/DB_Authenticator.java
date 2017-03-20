@@ -21,8 +21,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.icatproject.authentication.AuthnException;
 import org.icatproject.authentication.PasswordChecker;
-import org.icatproject.authn_db.exceptions.AuthnException;
 import org.icatproject.utils.AddressChecker;
 import org.icatproject.utils.AddressCheckerException;
 import org.icatproject.utils.CheckedProperties;

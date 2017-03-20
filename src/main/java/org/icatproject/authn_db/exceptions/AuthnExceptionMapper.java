@@ -8,6 +8,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
+import org.icatproject.authentication.AuthnException;
+
 @Provider
 public class AuthnExceptionMapper implements ExceptionMapper<AuthnException> {
 
