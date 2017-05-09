@@ -72,13 +72,6 @@ public class DB_Authenticator {
 		logger.info("Initialised DB_Authenticator");
 	}
 
-	/**
-	 * return the version of the DB authenticator
-	 * 
-	 * @summary Version
-	 * 
-	 * @return json string of the form: <samp>{"version":"4.4.0"}</samp>
-	 */
 	@GET
 	@Path("version")
 	@Produces(MediaType.APPLICATION_JSON)
