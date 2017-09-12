@@ -56,7 +56,7 @@ public class DB_Authenticator {
 				try {
 					addressChecker = new AddressChecker(props.getString("ip"));
 				} catch (Exception e) {
-					String msg = "Problem creating AddressChecker with information from authn_db.properties "
+					String msg = "Problem creating AddressChecker with information from run.properties "
 							+ e.getMessage();
 
 					logger.error(fatal, msg);
