@@ -7,6 +7,10 @@
 	</properties>
 
 	<body>
+	    <section name="2.0.1">
+	        <p>Changes to support Python 3. Now works on Python 2.7 and Python 3.
+			    Note: support for Python 2.6 is now dropped.</p>
+		</section>
 
 		<section name="2.0.0">
 			<p>Provide compatibility with Payara and make into a service.
