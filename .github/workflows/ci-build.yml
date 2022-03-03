@@ -41,8 +41,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: icatproject-contrib/icat-ansible
-          # TODO - Reference master here once https://github.com/icatproject-contrib/icat-ansible/pull/72 is merged
-          ref: make-dev-common-work-with-ubuntu-20
+          ref: master
           path: icat-ansible
       - name: Install Ansible
         run: pip install -r icat-ansible/requirements.txt
