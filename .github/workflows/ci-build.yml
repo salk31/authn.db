@@ -72,8 +72,12 @@ jobs:
       - name: Checkout authn-db
         uses: actions/checkout@v2
 
+      # Payara must be sourced otherwise the Maven build command fails
       - name: Run Build
         run: |
           grep payara ~/.bash_profile > payara_path_command
           source payara_path_command
           mvn install -DskipTests
+
+      - name: Run Unit Tests
+        run: mvn test -B
