@@ -13,9 +13,6 @@ jobs:
       matrix:
         java: [ '8', '11' ]
     steps:
-      - name: Add apt Repo
-        run: sudo add-apt-repository universe
-
       # Setup Java & Python
       - name: Setup Java
         uses: actions/setup-java@v2
