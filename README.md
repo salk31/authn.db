@@ -4,6 +4,6 @@
 
 General installation instructions are at http://www.icatproject.org/installation/component
 
-Specific installation instructions are at http://www.icatproject.org/mvn/site/authn/db/${project.version}/installation.html
+Specific installation instructions are at https://repo.icatproject.org/site/authn/db/2.0.1/installation.html
 
-All documentation on authn_db may be found at http://www.icatproject.org/mvn/site/authn/db/${project.version}
+All documentation on authn_db may be found at https://repo.icatproject.org/site/authn/db/2.0.1/
